@@ -34,6 +34,37 @@ function Login() {
                         <Logo width="100%" />
                     </span>
                 </div>
+                <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
+                <p className="mt-2 text-center text-base text-black/60 ">
+                    <Link to="/signup" className="font-medium text-primary transition-all duration-200 hover:underline">
+                        Sign Up
+                    </Link>
+                </p>
+                {error && <p className="text-red-600 mt-8 text-center"> {error} </p> }
+                <form onSubmit={handleSumbit(login)} className="mt-8"> 
+                    <div className="space-y-5">
+                        <Input 
+                            label = "Email: "
+                            placeholder = "Enter Your Email"
+                            type="email"
+                            {...register("email", {
+                                required: true,
+                                validate: {
+                                    matchPatern: (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "email address must be a valid address",
+                                }
+                            })}
+                        />
+                        <Input 
+                            label = "Password: "
+                            type ="password"
+                            placeholder="Enter Your Password"
+                            {
+                                ...register("password", {required:true})
+                            }
+                        />
+                        <Button type="sumbit" className="w-full" >Sign In </Button>
+                    </div>
+                </form>
             </div>
         </div>
     )
