@@ -70,9 +70,16 @@ function Signup() {
                             placeholder="Enter your password"
                             {...register("password", {
                                 required: true,
-                                
                             })}
                         />
+
+                        <Button 
+                        type="submit"
+                        className="w-full"
+                        >
+                            Create Account
+                        </Button>
+
                     </div>
                 </form>
             </div>
